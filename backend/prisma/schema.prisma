@@ -1,0 +1,70 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+enum JobStatus {
+    NEW
+    ASSIGNED
+    TRANSCRIBED
+    REVIEWED
+    COMPLETED
+}
+
+enum JobType {
+    PHYSICAL
+    REMOTE
+}
+
+model Job {
+    id               String    @id @default(uuid()) @db.Uuid
+    caseName         String    @map("case_name")
+    durationMinutes  Int       @map("duration_minutes")
+    jobType          JobType   @map("job_type")
+    city             String
+    status           JobStatus @default(NEW)
+    reporterId       String?   @map("reporter_id") @db.Uuid
+    editorId         String?   @map("editor_id") @db.Uuid
+    reporterPayment  Int       @default(0) @map("reporter_payment")
+    editorPayment    Int       @default(0) @map("editor_payment")
+    totalPayment     Int       @default(0) @map("total_payment")
+    createdAt        DateTime  @default(now()) @map("created_at")
+    updatedAt        DateTime  @updatedAt @map("updated_at")
+
+    reporter Reporter? @relation(fields: [reporterId], references: [id], onDelete: SetNull)
+    editor   Editor?   @relation(fields: [editorId], references: [id], onDelete: SetNull)
+
+    @@index([status])
+    @@index([city])
+    @@map("jobs")
+}
+
+model Reporter {
+    id             String   @id @default(uuid()) @db.Uuid
+    name           String
+    city           String
+    isAvailable    Boolean  @default(true) @map("is_available")
+    ratePerMinute  Int      @map("rate_per_minute")
+    createdAt      DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    jobs Job[]
+
+    @@map("reporters")
+}
+
+model Editor {
+    id           String   @id @default(uuid()) @db.Uuid
+    name         String
+    flatFee      Int      @map("flat_fee")
+    isAvailable  Boolean  @default(true) @map("is_available")
+    createdAt    DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    jobs Job[]
+
+    @@map("editors")
+}
