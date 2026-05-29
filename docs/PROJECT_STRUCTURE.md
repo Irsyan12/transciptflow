@@ -12,13 +12,9 @@ TranscriptFlow/
 │   │   ├── routes/
 │   │   ├── services/
 │   │   ├── middleware/
+│   │   ├── repositories/
 │   │   ├── utils/
 │   │   ├── types/
-│   │   ├── modules/
-│   │   │   ├── jobs/
-│   │   │   ├── reporters/
-│   │   │   ├── editors/
-│   │   │   └── payments/
 │   │   ├── app.ts
 │   │   └── server.ts
 │   │
@@ -50,7 +46,6 @@ TranscriptFlow/
 │   ├── database-schema.md
 │   └── project-structure.md
 │
-├── docker-compose.yml
 ├── README.md
 └── .gitignore
 ```
@@ -61,20 +56,20 @@ TranscriptFlow/
 
 ## Frontend
 
-* Next.js
-* TypeScript
-* Tailwind CSS
-* Axios
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Axios
 
 ---
 
 ## Backend
 
-* Node.js
-* Express.js
-* TypeScript
-* Prisma ORM
-* PostgreSQL
+- Node.js
+- Express.js
+- TypeScript
+- Prisma ORM
+- PostgreSQL
 
 ---
 
@@ -82,18 +77,18 @@ TranscriptFlow/
 
 ## Frontend
 
-* Job dashboard
-* Status badges
-* Assignment modal/form
-* Payment summary
-* Filtering by status
+- Job dashboard
+- Status badges
+- Assignment modal/form
+- Payment summary
+- Filtering by status
 
 ---
 
 ## Backend
 
-* REST API
-* Status transition validation
-* Payment calculation service
-* Assignment logic
-* Error handling middleware
+- REST API
+- Status transition validation
+- Payment calculation service
+- Assignment logic
+- Error handling middleware

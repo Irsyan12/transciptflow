@@ -6,9 +6,13 @@
   "author": "",
   "type": "module",
   "main": "index.js",
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --respawn --transpile-only index.ts"
+    "seed": "tsx prisma/seed.ts",
+    "start": "tsx watch index.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
