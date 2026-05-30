@@ -27,12 +27,15 @@ Request Body:
 }
 ```
 
-Response:
+Response (201 Created):
 
 ```json
 {
-  "id": "uuid",
-  "status": "NEW"
+  "success": true,
+  "data": {
+    "id": "uuid",
+    "status": "NEW"
+  }
 }
 ```
 
@@ -112,12 +115,12 @@ Request Body:
 
 Rules:
 
-* Physical jobs prefer reporters from the same city
-* Remote jobs allow any available reporter
+- Physical jobs prefer reporters from the same city
+- Remote jobs allow any available reporter
 
 When assigned:
 
-* job status becomes `ASSIGNED`
+- job status becomes `ASSIGNED`
 
 ---
 
@@ -147,8 +150,8 @@ Request Body:
 
 Rules:
 
-* Editor can only be assigned after transcription
-* Job status must be `TRANSCRIBED`
+- Editor can only be assigned after transcription
+- Job status must be `TRANSCRIBED`
 
 ---
 
@@ -164,13 +167,16 @@ Response:
 
 ```json
 {
-  "reporterPayment": 180000,
-  "editorPayment": 50000,
-  "totalPayment": 230000
+  "success": true,
+  "data": {
+    "reporterPayment": 180000,
+    "editorPayment": 50000,
+    "totalPayment": 230000
+  }
 }
 ```
 
 Payment Rules:
 
-* Reporter payment = duration × rate per minute
-* Editor payment = flat fee per job
+- Reporter payment = duration × rate per minute
+- Editor payment = flat fee per job

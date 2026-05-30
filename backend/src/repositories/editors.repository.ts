@@ -18,9 +18,8 @@ async function findEditorById(id: string) {
 
 async function createEditor(data: {
   name: string;
-  city: string;
-  isAvailable: boolean;
-  ratePerMinute: number;
+  flatFee: number;
+  isAvailable?: boolean;
 }) {
   return prisma.editor.create({
     data,
@@ -31,10 +30,9 @@ async function updateEditor(
   id: string,
   data: {
     name?: string;
-    city?: string;
+    flatFee?: number;
     isAvailable?: boolean;
-    ratePerMinute?: number;
-  }
+  },
 ) {
   return prisma.editor.update({
     where: {
@@ -52,4 +50,10 @@ async function deleteEditor(id: string) {
   });
 }
 
-export { findEditors, findEditorById, createEditor, updateEditor, deleteEditor };
+export {
+  findEditors,
+  findEditorById,
+  createEditor,
+  updateEditor,
+  deleteEditor,
+};
